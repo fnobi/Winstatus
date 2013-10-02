@@ -1,0 +1,14 @@
+{
+  "name": "Winstatus",
+  "version": "0.0.0",
+  "main": "js/Winstatus.js",
+  "devDependencies": {
+    "ejs-head-modules": "~0.1.0",
+    "ejs-sns-modules": "~0.3.0",
+    "html5shiv": "~3.6.2"
+  },
+  "dependencies": {
+    "EventEmitter": "~1.0.0",
+    "inherits": "~0.0.1"
+  }
+}

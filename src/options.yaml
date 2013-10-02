@@ -1,0 +1,40 @@
+name: Winstatus
+
+url:
+  http://winstatus.fnobi.com/
+
+repository:
+  git://github.com/fnobi/winstatus.git
+
+meta:
+  title:
+    Winstatus
+  description:
+    emit window size & scroll status event.
+  keywords: []
+  favicon_url: /img/favicon.ico
+
+ios:
+  viewport: 
+    - width=device-width
+    - initial-scale=1.0
+    - maximum-scale=1.0
+    - user-scalable=0
+  icon_url: /img/apple-touch-icon.png
+
+sns:
+  twitter:
+    sharetext:
+      emit window size & scroll status event.      
+    sharehashtag: []
+
+  facebook:
+    app_id: ''
+    sharetext:
+      emit window size & scroll status event.
+
+ogp:
+  image: 
+    url: http://winstatus.fnobi.com//img/ogp-icon.png
+    width: 300
+    height: 300
