@@ -129,10 +129,13 @@ var inherits = function (Child, Parent) {
 };
 (function (exports) {
     var Winstatus = function (opts) {
-        this.windowW = 0;
-        this.windowH = 0;
+        this.windowWidth = 0;
+        this.windowHeight = 0;
         this.scrollX = 0;
         this.scrollY = 0;
+
+        this.updateWindowSize();
+        this.updateScroll();
 
         this.initListeners();
     };
@@ -142,6 +145,11 @@ var inherits = function (Child, Parent) {
         var self = this;
         var windowView = new LightView(window);
         var documentView = new LightView(document);
+
+        windowView.on('load', function () {
+            self.updateWindowSize();
+            self.updateScroll();
+        });
 
         windowView.on('resize', function () {
             self.updateWindowSize();

@@ -5,9 +5,6 @@
         this.scrollX = 0;
         this.scrollY = 0;
 
-        this.updateWindowSize();
-        this.updateScroll();
-
         this.initListeners();
     };
     inherits(Winstatus, EventEmitter);
@@ -16,6 +13,11 @@
         var self = this;
         var windowView = new LightView(window);
         var documentView = new LightView(document);
+
+        windowView.on('load', function () {
+            self.updateWindowSize();
+            self.updateScroll();
+        });
 
         windowView.on('resize', function () {
             self.updateWindowSize();
