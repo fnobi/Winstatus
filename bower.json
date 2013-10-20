@@ -1,6 +1,6 @@
 {
   "name": "Winstatus",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "js/Winstatus.js",
   "devDependencies": {
     "ejs-head-modules": "~0.1.0",
