@@ -144,7 +144,7 @@ var inherits = function (Child, Parent) {
         var documentView = new LightView(document);
 
         windowView.on('resize', function () {
-            self.updateWinSize();
+            self.updateWindowSize();
         });
         windowView.on('scroll', function () {
             self.updateScroll();

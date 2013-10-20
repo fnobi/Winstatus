@@ -1,9 +1,12 @@
 (function (exports) {
     var Winstatus = function (opts) {
-        this.windowW = 0;
-        this.windowH = 0;
+        this.windowWidth = 0;
+        this.windowHeight = 0;
         this.scrollX = 0;
         this.scrollY = 0;
+
+        this.updateWindowSize();
+        this.updateScroll();
 
         this.initListeners();
     };
@@ -15,7 +18,7 @@
         var documentView = new LightView(document);
 
         windowView.on('resize', function () {
-            self.updateWinSize();
+            self.updateWindowSize();
         });
         windowView.on('scroll', function () {
             self.updateScroll();
