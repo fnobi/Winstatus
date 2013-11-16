@@ -5,29 +5,46 @@
         this.scrollX = 0;
         this.scrollY = 0;
 
+        this.throttle = opts.throttle;
+
         this.initListeners();
     };
     inherits(Winstatus, EventEmitter);
 
     Winstatus.prototype.initListeners = function () {
         var self = this;
+        var throttle = this.throttle;
         var windowView = new LightView(window);
         var documentView = new LightView(document);
 
+        function resize () {
+            if (self.resizeThrottle) {
+                clearTimeout(self.resizeThrottle);
+            }
+            self.resizeThrottle = setTimeout(function () {
+                self.updateWindowSize();
+                self.resizeThrottle = null;
+            }, throttle);
+        }
+
+        function scroll () {
+            if (self.scrollThrottle) {
+                clearTimeout(self.scrollThrottle);
+            }
+            self.scrollThrottle = setTimeout(function () {
+                self.updateScroll();
+                self.scrollThrottle = null;
+            });
+        }
+
         windowView.on('load', function () {
-            self.updateWindowSize();
-            self.updateScroll();
+            resize();
+            scroll();
         });
 
-        windowView.on('resize', function () {
-            self.updateWindowSize();
-        });
-        windowView.on('scroll', function () {
-            self.updateScroll();
-        });
-        documentView.on('scroll', function () {
-            self.updateScroll();
-        });
+        windowView.on('resize', resize);
+        windowView.on('scroll', scroll);
+        documentView.on('scroll', scroll);
     };
 
     Winstatus.prototype.updateWindowSize = function () {
